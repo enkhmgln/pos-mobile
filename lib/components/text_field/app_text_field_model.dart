@@ -13,9 +13,9 @@ class AppTextFieldModel {
     this.maxLength,
     this.maxLines = 1,
     this.validators,
-  })  : controller = TextEditingController(),
-        focusNode = FocusNode(),
-        errorText = ValueNotifier<String?>(null);
+  }) : controller = TextEditingController(),
+       focusNode = FocusNode(),
+       errorText = ValueNotifier<String?>(null);
 
   final String? label;
   final String? hint;

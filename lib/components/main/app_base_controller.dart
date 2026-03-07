@@ -46,7 +46,7 @@ abstract class AppBaseController extends GetxController {
     required String text,
     String? titleText,
     String? acceptText,
-    String? cancelText,
+    String? cancelText = 'Хаах',
   }) {
     return AppAlert(
       type: AppAlertType.warning,

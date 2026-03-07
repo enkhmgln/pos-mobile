@@ -27,7 +27,7 @@ class AppButtonWidget extends StatelessWidget {
     switch (model.type) {
       case AppButtonType.primary:
         return (
-          fore: AppColors.onPrimary,
+          fore: AppColors.background,
           back: AppColors.primary,
           border: AppColors.transparent,
         );
@@ -52,7 +52,7 @@ class AppButtonWidget extends StatelessWidget {
       case AppButtonType.accentPrimary:
       case AppButtonType.glass:
         return (
-          fore: AppColors.onPrimary,
+          fore: AppColors.background,
           back: AppColors.primary,
           border: AppColors.transparent,
         );

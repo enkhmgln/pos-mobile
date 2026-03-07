@@ -15,7 +15,7 @@ abstract class AppToast {
     Duration duration = const Duration(seconds: 3),
   }) {
     final backgroundColor = isError ? AppColors.error : AppColors.primary;
-    final colorText = isError ? AppColors.onError : AppColors.onPrimary;
+    final colorText = AppColors.background;
     Get.snackbar(
       title ?? '',
       message,
@@ -39,10 +39,10 @@ abstract class AppToast {
   }
 
   static void showError(String message, {String? title}) {
-    show(message, title: title ?? 'Error', isError: true);
+    show(message, title: title ?? 'Алдаа', isError: true);
   }
 
   static void showSuccess(String message, {String? title}) {
-    show(message, title: title ?? 'Success', isError: false);
+    show(message, title: title ?? 'Амжилттай', isError: false);
   }
 }
