@@ -59,11 +59,11 @@ class WelcomeView extends GetView<WelcomeController> {
                             controller.isPlaying.value
                                 ? Icons.pause
                                 : Icons.play_arrow,
-                            color: AppColors.onPrimary,
+                            color: AppColors.background,
                             size: 28,
                           ),
                           style: IconButton.styleFrom(
-                            foregroundColor: AppColors.onPrimary,
+                            foregroundColor: AppColors.background,
                           ),
                         ),
                       ),
@@ -77,7 +77,7 @@ class WelcomeView extends GetView<WelcomeController> {
                       child: Text(
                         'Зарлаа.\nБүртгэлээ.\nАшигтай боллоо.',
                         textAlign: TextAlign.left,
-                        style: AppTextStyles.displayBold.copyWith(color: AppColors.onPrimary),
+                        style: AppTextStyles.displayBold.copyWith(color: AppColors.background),
                       ),
                     ),
                   ),
