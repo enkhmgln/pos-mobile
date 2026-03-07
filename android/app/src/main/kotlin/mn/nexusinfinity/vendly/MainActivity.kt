@@ -1,4 +1,4 @@
-package mn.nexusinfinity.vendly
+package mn.nexusinfinity.solgoi
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-# vendly
+# solgoi
 
 A new Flutter project.
 

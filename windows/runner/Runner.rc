@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "mn.nexusinfinity" "\0"
-            VALUE "FileDescription", "vendly" "\0"
+            VALUE "FileDescription", "solgoi" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "vendly" "\0"
+            VALUE "InternalName", "solgoi" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 mn.nexusinfinity. All rights reserved." "\0"
-            VALUE "OriginalFilename", "vendly.exe" "\0"
-            VALUE "ProductName", "vendly" "\0"
+            VALUE "OriginalFilename", "solgoi.exe" "\0"
+            VALUE "ProductName", "solgoi" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

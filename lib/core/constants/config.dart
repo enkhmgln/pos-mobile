@@ -10,4 +10,4 @@ const kFcmToken = 'kFcmToken';
 const kStoreUser = 'kStoreUser';
 const kStoreDevice = 'kStoreDevice';
 
-const appName = 'Vendly';
+const appName = 'Solgoi';
