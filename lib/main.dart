@@ -27,12 +27,12 @@ class MainApp extends StatelessWidget {
     return GetMaterialApp(
       title: appName,
       debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.initial,
-      getPages: AppPages.routes,
       theme: ThemeData(
         fontFamily: AppTextStyles.fontFamily,
         textTheme: AppTextStyles.textTheme,
       ),
+      initialRoute: AppPages.splash,
+      getPages: AppPages.routes,
     );
   }
 }

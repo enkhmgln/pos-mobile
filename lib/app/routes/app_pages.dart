@@ -4,9 +4,17 @@ import '/screens/_.dart';
 
 class AppPages {
   AppPages._();
-  static const String initial = WelcomeView.routeName;
+
+  static String get splash => SplashView.routeName;
+
+  static String get initial => WelcomeView.routeName;
 
   static final List<GetPage> routes = [
+    GetPage(
+      name: SplashView.routeName,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
+    ),
     GetPage(
       name: WelcomeView.routeName,
       page: () => const WelcomeView(),
