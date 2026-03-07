@@ -31,6 +31,12 @@ class AppButtonWidget extends StatelessWidget {
           back: AppColors.primary,
           border: AppColors.transparent,
         );
+      case AppButtonType.surface:
+        return (
+          fore: AppColors.textPrimary,
+          back: AppColors.background,
+          border: AppColors.transparent,
+        );
       case AppButtonType.outline:
         return (
           fore: AppColors.primary,
@@ -125,6 +131,7 @@ class AppButtonWidget extends StatelessWidget {
         button = _buildGlassButton(context, child, height, c);
         break;
       case AppButtonType.primary:
+      case AppButtonType.surface:
       case AppButtonType.accentPrimary:
         button = ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -195,8 +202,8 @@ class AppButtonWidget extends StatelessWidget {
     final overlayColor = c.fore.withValues(alpha: 0.12);
     return ClipRRect(
       borderRadius: BorderRadius.circular(model.borderRadius),
-      child: Material(
-        color: Colors.transparent,
+        child: Material(
+        color: AppColors.transparent,
         child: InkWell(
           onTap: _effectiveOnPressed,
           borderRadius: BorderRadius.circular(model.borderRadius),

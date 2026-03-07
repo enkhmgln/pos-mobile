@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 enum AppButtonType {
   primary,
+  surface,
   outline,
   text,
   accentPrimary,
@@ -9,7 +10,7 @@ enum AppButtonType {
 }
 
 enum AppButtonSize {
-  large(height: 56, iconSize: 24, fontSize: 18),
+  large(height: 56, iconSize: 24, fontSize: 17),
   medium(height: 48, iconSize: 24, fontSize: 16),
   small(height: 40, iconSize: 20, fontSize: 14);
 
