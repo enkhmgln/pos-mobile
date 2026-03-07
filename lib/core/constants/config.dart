@@ -9,6 +9,5 @@ const kFcmToken = 'kFcmToken';
 
 const kStoreUser = 'kStoreUser';
 const kStoreDevice = 'kStoreDevice';
-const kThemeMode = 'kThemeMode';
 
 const appName = 'Vendly';

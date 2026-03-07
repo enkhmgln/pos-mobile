@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppCheckbox extends StatelessWidget {
   const AppCheckbox({
     super.key,
@@ -14,7 +16,7 @@ class AppCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = activeColor ?? Theme.of(context).colorScheme.primary;
+    final color = activeColor ?? AppColors.primary;
     return Theme(
       data: Theme.of(context).copyWith(
         checkboxTheme: CheckboxThemeData(

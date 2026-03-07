@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppEmpty extends StatelessWidget {
   const AppEmpty({super.key, this.icon, this.text = 'No data'});
 
@@ -8,7 +10,6 @@ class AppEmpty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -18,7 +19,7 @@ class AppEmpty extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: cs.outline,
+              color: AppColors.textSecondary,
             ),
           ),
         ],

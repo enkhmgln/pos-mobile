@@ -2,15 +2,11 @@ import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
 
-import '/app/theme/app_theme_extension.dart';
+import '/app/theme/app_colors.dart';
 import 'app_button_model.dart';
 
 class AppButtonWidget extends StatelessWidget {
-  const AppButtonWidget({
-    super.key,
-    required this.model,
-    this.onPressed,
-  });
+  const AppButtonWidget({super.key, required this.model, this.onPressed});
 
   final AppButtonModel model;
   final VoidCallback? onPressed;
@@ -18,29 +14,42 @@ class AppButtonWidget extends StatelessWidget {
   VoidCallback? get _effectiveOnPressed =>
       (model.isLoading || !model.isEnabled) ? null : onPressed;
 
-  ({Color fore, Color back, Color border}) _resolveColors(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final ext = Theme.of(context).extension<AppThemeExtension>();
-    final primary = cs.primary;
-    final onPrimary = cs.onPrimary;
-    final surface = cs.surfaceContainerHighest;
-    final outline = cs.outline;
-    final accent = ext?.accent ?? primary;
-    final onAccent = ext?.onAccent ?? onPrimary;
-
+  ({Color fore, Color back, Color border}) _resolveColors(
+    BuildContext context,
+  ) {
     if (!model.isEnabled) {
-      return (fore: outline, back: surface, border: Colors.transparent);
+      return (
+        fore: AppColors.outline,
+        back: AppColors.surface,
+        border: AppColors.transparent,
+      );
     }
     switch (model.type) {
       case AppButtonType.primary:
-        return (fore: onPrimary, back: primary, border: Colors.transparent);
+        return (
+          fore: AppColors.onPrimary,
+          back: AppColors.primary,
+          border: AppColors.transparent,
+        );
       case AppButtonType.outline:
-        return (fore: primary, back: Colors.transparent, border: primary);
+        return (
+          fore: AppColors.primary,
+          back: AppColors.transparent,
+          border: AppColors.primary,
+        );
       case AppButtonType.text:
-        return (fore: primary, back: Colors.transparent, border: Colors.transparent);
+        return (
+          fore: AppColors.primary,
+          back: AppColors.transparent,
+          border: AppColors.transparent,
+        );
       case AppButtonType.accentPrimary:
       case AppButtonType.glass:
-        return (fore: onAccent, back: accent, border: Colors.transparent);
+        return (
+          fore: AppColors.onPrimary,
+          back: AppColors.primary,
+          border: AppColors.transparent,
+        );
     }
   }
 
@@ -89,9 +98,18 @@ class AppButtonWidget extends StatelessWidget {
 
   EdgeInsets get _padding {
     return switch (model.size) {
-      AppButtonSize.small => const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      AppButtonSize.medium => const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      AppButtonSize.large => const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      AppButtonSize.small => const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 8,
+      ),
+      AppButtonSize.medium => const EdgeInsets.symmetric(
+        horizontal: 24,
+        vertical: 12,
+      ),
+      AppButtonSize.large => const EdgeInsets.symmetric(
+        horizontal: 24,
+        vertical: 16,
+      ),
     };
   }
 
@@ -174,8 +192,7 @@ class AppButtonWidget extends StatelessWidget {
   ) {
     const blurSigma = 8.0;
     final enabled = model.isEnabled && !model.isLoading;
-    final onAccent = Theme.of(context).extension<AppThemeExtension>()?.onAccent;
-    final overlayColor = (onAccent ?? c.fore).withValues(alpha: 0.12);
+    final overlayColor = c.fore.withValues(alpha: 0.12);
     return ClipRRect(
       borderRadius: BorderRadius.circular(model.borderRadius),
       child: Material(
@@ -199,8 +216,9 @@ class AppButtonWidget extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(model.borderRadius),
+                          borderRadius: BorderRadius.circular(
+                            model.borderRadius,
+                          ),
                           color: overlayColor,
                         ),
                       ),
@@ -209,8 +227,7 @@ class AppButtonWidget extends StatelessWidget {
                   )
                 : Container(
                     decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(model.borderRadius),
+                      borderRadius: BorderRadius.circular(model.borderRadius),
                       color: c.back,
                     ),
                     alignment: Alignment.center,

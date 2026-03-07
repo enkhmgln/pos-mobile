@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
 import 'app_dropdown_item.dart';
 import 'app_dropdown_sheet.dart';
 
@@ -33,11 +34,6 @@ class AppDropdownWidget<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    final surface = cs.surfaceContainerHighest;
-    final textColor = cs.onSurface;
-    final hintColor = cs.outline;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -47,7 +43,7 @@ class AppDropdownWidget<T> extends StatelessWidget {
             label,
             style: theme.textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w500,
-              color: hintColor,
+              color: AppColors.textSecondary,
             ),
           ),
           const SizedBox(height: 8),
@@ -60,10 +56,10 @@ class AppDropdownWidget<T> extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               decoration: BoxDecoration(
-                color: surface,
+                color: AppColors.surface,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: hintColor.withValues(alpha: 0.6),
+                  color: AppColors.textSecondary.withValues(alpha: 0.6),
                   width: 1,
                 ),
               ),
@@ -73,11 +69,17 @@ class AppDropdownWidget<T> extends StatelessWidget {
                     child: Text(
                       selectedItem?.name ?? 'Select',
                       style: theme.textTheme.bodyLarge?.copyWith(
-                        color: selectedItem != null ? textColor : hintColor,
+                        color: selectedItem != null
+                            ? AppColors.textPrimary
+                            : AppColors.textSecondary,
                       ),
                     ),
                   ),
-                  Icon(Icons.expand_more, color: hintColor, size: 24),
+                  Icon(
+                    Icons.expand_more,
+                    color: AppColors.textSecondary,
+                    size: 24,
+                  ),
                 ],
               ),
             ),

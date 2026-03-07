@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppCardBorder extends StatelessWidget {
   const AppCardBorder({
     super.key,
@@ -22,9 +24,8 @@ class AppCardBorder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final bg = backgroundColor ?? cs.surfaceContainerHighest;
-    final border = borderColor ?? cs.outline.withValues(alpha: 0.5);
+    final bg = backgroundColor ?? AppColors.surface;
+    final border = borderColor ?? AppColors.outline.withValues(alpha: 0.5);
     final radius = borderRadius ?? BorderRadius.circular(12);
 
     return Container(

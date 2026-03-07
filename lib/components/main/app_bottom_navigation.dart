@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppBottomNavItem {
   const AppBottomNavItem({
     required this.icon,
@@ -27,13 +29,8 @@ class AppBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    final background = cs.surface;
-    final textColor = cs.onSurface;
-    final inactiveColor = cs.outline;
-
     return Container(
-      decoration: BoxDecoration(color: background),
+      decoration: BoxDecoration(color: AppColors.surface),
       child: SafeArea(
         top: false,
         child: Padding(
@@ -64,7 +61,9 @@ class AppBottomNavigationBar extends StatelessWidget {
                               fontWeight: selected
                                   ? FontWeight.w600
                                   : FontWeight.w500,
-                              color: selected ? textColor : inactiveColor,
+                              color: selected
+                                  ? AppColors.textPrimary
+                                  : AppColors.textSecondary,
                             ),
                           ),
                         ],

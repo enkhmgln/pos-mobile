@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppChip extends StatelessWidget {
   const AppChip({
     super.key,
@@ -14,30 +16,25 @@ class AppChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final surface = cs.surfaceContainerHighest;
-    final textColor = cs.onSurface;
-    final hintColor = cs.outline;
-
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        backgroundColor: surface,
-        foregroundColor: selected ? cs.primary : hintColor,
+        backgroundColor: AppColors.surface,
+        foregroundColor: selected ? AppColors.primary : AppColors.textSecondary,
         side: BorderSide(
           width: selected ? 1.5 : 1,
-          color: selected ? cs.primary : hintColor.withValues(alpha: 0.6),
+          color: selected
+              ? AppColors.primary
+              : AppColors.textSecondary.withValues(alpha: 0.6),
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
       child: Text(
         title,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
           fontWeight: FontWeight.w500,
-          color: selected ? cs.primary : textColor,
+          color: selected ? AppColors.primary : AppColors.textPrimary,
         ),
       ),
     );

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '/app/theme/app_colors.dart';
-import '/app/theme/app_theme_extension.dart';
 
 abstract class AppToast {
   AppToast._();
@@ -14,17 +13,14 @@ abstract class AppToast {
     SnackPosition position = SnackPosition.TOP,
     Duration duration = const Duration(seconds: 3),
   }) {
-    final backgroundColor = isError ? AppColors.error : AppColors.success;
-    final onAccent = Get.context != null
-        ? (Theme.of(Get.context!).extension<AppThemeExtension>()?.onAccent ??
-            AppColors.onAccent)
-        : AppColors.onAccent;
+    final backgroundColor = isError ? AppColors.error : AppColors.primary;
+    final colorText = isError ? AppColors.onError : AppColors.onPrimary;
     Get.snackbar(
       title ?? '',
       message,
       snackPosition: position,
       backgroundColor: backgroundColor,
-      colorText: onAccent,
+      colorText: colorText,
       margin: const EdgeInsets.all(16),
       borderRadius: 12,
       duration: duration,
@@ -32,7 +28,7 @@ abstract class AppToast {
           ? Text(
               title,
               style: TextStyle(
-                color: onAccent,
+                color: colorText,
                 fontWeight: FontWeight.w600,
                 fontSize: 14,
               ),
@@ -40,7 +36,7 @@ abstract class AppToast {
           : const SizedBox.shrink(),
       messageText: Text(
         message,
-        style: TextStyle(color: onAccent, fontSize: 13),
+        style: TextStyle(color: colorText, fontSize: 13),
       ),
     );
   }

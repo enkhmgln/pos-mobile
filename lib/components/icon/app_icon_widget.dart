@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '/app/theme/app_colors.dart';
 import 'app_icon_model.dart';
 
 class AppIconWidget extends StatelessWidget {
@@ -12,7 +13,7 @@ class AppIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final w = model.width ?? 24.0;
     final h = model.height ?? 24.0;
-    final color = model.color ?? Theme.of(context).colorScheme.onSurface;
+    final color = model.color ?? AppColors.textPrimary;
 
     switch (model.type) {
       case AppIconType.svg:

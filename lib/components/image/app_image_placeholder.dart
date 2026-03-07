@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppImagePlaceholder extends StatelessWidget {
   const AppImagePlaceholder({
     super.key,
@@ -14,8 +16,7 @@ class AppImagePlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final color = backgroundColor ?? cs.surfaceContainerHighest;
+    final color = backgroundColor ?? AppColors.surface;
     return Container(
       alignment: Alignment.center,
       color: color,
@@ -23,7 +24,7 @@ class AppImagePlaceholder extends StatelessWidget {
           Icon(
             Icons.image_outlined,
             size: iconSize,
-            color: cs.outline,
+            color: AppColors.textSecondary,
           ),
     );
   }

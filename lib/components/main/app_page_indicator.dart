@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppPageIndicator extends StatelessWidget {
   const AppPageIndicator({
     super.key,
@@ -24,9 +26,8 @@ class AppPageIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primary = Theme.of(context).colorScheme.primary;
-    final active = activeColor ?? primary;
-    final inactive = inactiveColor ?? primary.withValues(alpha: 0.3);
+    final active = activeColor ?? AppColors.primary;
+    final inactive = inactiveColor ?? AppColors.primary.withValues(alpha: 0.3);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

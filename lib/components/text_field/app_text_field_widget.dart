@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/app/theme/app_theme_extension.dart';
+import '/app/theme/app_colors.dart';
 import 'app_text_field_model.dart';
 import '/core/utils/validator.dart';
 
@@ -16,6 +16,7 @@ class AppTextFieldWidget extends StatefulWidget {
   final AppTextFieldModel model;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onSubmitted;
+
   /// Optional trailing widget inside the field (e.g. success checkmark).
   final Widget? suffixWidget;
 
@@ -61,11 +62,6 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
   Widget build(BuildContext context) {
     final m = widget.model;
     final theme = Theme.of(context);
-    final ext = theme.extension<AppThemeExtension>();
-    final cs = theme.colorScheme;
-    final surfaceVariant = ext?.surfaceVariant ?? cs.surfaceContainerHighest;
-    final onSurfaceVariant = ext?.onSurfaceVariant ?? cs.outline;
-    final focus = ext?.focus ?? cs.primary;
 
     return ValueListenableBuilder<String?>(
       valueListenable: m.errorText,
@@ -82,7 +78,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
               Text(
                 m.label!,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: onSurfaceVariant,
+                  color: AppColors.textSecondary,
                   fontWeight: FontWeight.w400,
                   fontSize: 15,
                 ),
@@ -100,20 +96,26 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
               maxLength: m.maxLength,
               maxLines: m.maxLines,
               autocorrect: false,
-              cursorColor: focus,
+              cursorColor: AppColors.primary,
               onChanged: widget.onChanged,
               onFieldSubmitted: widget.onSubmitted,
               style: theme.textTheme.bodyLarge?.copyWith(
-                color: m.enabled ? cs.onSurface : onSurfaceVariant,
+                color: m.enabled
+                    ? AppColors.textPrimary
+                    : AppColors.textSecondary,
                 fontSize: 16,
               ),
               decoration: InputDecoration(
                 hintText: m.hint,
-                hintStyle: TextStyle(color: onSurfaceVariant, fontSize: 16),
+                hintStyle: TextStyle(
+                  color: AppColors.textSecondary,
+                  fontSize: 16,
+                ),
                 errorText: errorText,
                 filled: true,
-                fillColor:
-                    m.enabled ? surfaceVariant : surfaceVariant.withValues(alpha: 0.6),
+                fillColor: m.enabled
+                    ? AppColors.surface
+                    : AppColors.surface.withValues(alpha: 0.6),
                 border: border,
                 enabledBorder: border,
                 focusedBorder: OutlineInputBorder(
@@ -122,7 +124,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(_borderRadius),
-                  borderSide: BorderSide(color: cs.error),
+                  borderSide: BorderSide(color: AppColors.error),
                 ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
@@ -141,7 +143,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
                             m.obscureText
                                 ? Icons.visibility_off_outlined
                                 : Icons.visibility_outlined,
-                            color: onSurfaceVariant,
+                            color: AppColors.textSecondary,
                             size: 22,
                           ),
                           onPressed: () {

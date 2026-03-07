@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '/app/theme/app_colors.dart';
 import 'app_dropdown_item.dart';
 
 class AppDropdownSheet<T> extends StatelessWidget {
@@ -20,13 +21,9 @@ class AppDropdownSheet<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    final background = cs.surface;
-    final textColor = cs.onSurface;
-
     return Container(
       decoration: BoxDecoration(
-        color: background,
+        color: AppColors.surface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
       ),
       child: DraggableScrollableSheet(
@@ -47,7 +44,7 @@ class AppDropdownSheet<T> extends StatelessWidget {
                       width: 40,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: cs.outline.withValues(alpha: 0.6),
+                        color: AppColors.outline.withValues(alpha: 0.6),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -56,13 +53,13 @@ class AppDropdownSheet<T> extends StatelessWidget {
                       title,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: textColor,
+                        color: AppColors.textPrimary,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Divider(
                       height: 1,
-                      color: cs.outline.withValues(alpha: 0.5),
+                      color: AppColors.outline.withValues(alpha: 0.5),
                     ),
                   ],
                 ),
@@ -76,7 +73,7 @@ class AppDropdownSheet<T> extends StatelessWidget {
                       title: Text(
                         item.name,
                         style: theme.textTheme.bodyLarge?.copyWith(
-                          color: textColor,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       onTap: () => Get.back(result: item),

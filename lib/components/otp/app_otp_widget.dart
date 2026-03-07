@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '/app/theme/app_colors.dart';
 import 'app_otp_model.dart';
 
 class AppOtpWidget extends StatefulWidget {
@@ -93,17 +94,13 @@ class _AppOtpDigit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final surface = cs.surfaceContainerHighest;
-    final placeholderColor = cs.outline;
-
     return Container(
       width: size,
       height: size,
       alignment: Alignment.center,
       margin: const EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
-        color: surface,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(_otpDigitRadius),
       ),
       child: value == null
@@ -111,14 +108,14 @@ class _AppOtpDigit extends StatelessWidget {
               '−',
               style: Theme.of(
                 context,
-              ).textTheme.titleMedium?.copyWith(color: placeholderColor),
+              ).textTheme.titleMedium?.copyWith(color: AppColors.textSecondary),
             )
           : isSecure
           ? Container(
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: cs.primary,
+                color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
             )
@@ -126,7 +123,7 @@ class _AppOtpDigit extends StatelessWidget {
               value!,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: cs.onSurface,
+                color: AppColors.textPrimary,
               ),
             ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AppAppBar({
     super.key,
@@ -37,11 +39,8 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final appBarTheme = theme.appBarTheme;
-    final resolvedBackground =
-        backgroundColor ?? appBarTheme.backgroundColor ?? theme.colorScheme.surface;
-    final resolvedForeground =
-        foregroundColor ?? appBarTheme.foregroundColor ?? theme.colorScheme.onSurface;
+    final resolvedBackground = backgroundColor ?? AppColors.background;
+    final resolvedForeground = foregroundColor ?? AppColors.textPrimary;
     final resolvedLeading = showLeading ? (leading ?? _defaultLeading) : const SizedBox.shrink();
 
     return AppBar(

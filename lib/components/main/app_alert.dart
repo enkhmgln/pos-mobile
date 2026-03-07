@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '/app/theme/app_theme_extension.dart';
+import '/app/theme/app_colors.dart';
 import '/components/button/_.dart';
 
 enum AppAlertType {
@@ -39,20 +39,14 @@ class AppAlert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    final ext = theme.extension<AppThemeExtension>();
-    final background = cs.surface;
-    final textColor = cs.onSurface;
-    final hintColor = cs.outline;
-
     final iconColor = switch (type) {
-      AppAlertType.success => ext?.accent ?? cs.primary,
-      AppAlertType.error => cs.error,
-      AppAlertType.warning => cs.primary,
+      AppAlertType.success => AppColors.primary,
+      AppAlertType.error => AppColors.error,
+      AppAlertType.warning => AppColors.primary,
     };
 
     return Dialog(
-      backgroundColor: background,
+      backgroundColor: AppColors.surface,
       insetPadding: const EdgeInsets.symmetric(horizontal: 24),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
@@ -75,7 +69,7 @@ class AppAlert extends StatelessWidget {
               textAlign: TextAlign.center,
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: textColor,
+                color: AppColors.textPrimary,
               ),
             ),
             const SizedBox(height: 12),
@@ -84,7 +78,7 @@ class AppAlert extends StatelessWidget {
               textAlign: TextAlign.center,
               maxLines: 6,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: hintColor,
+                color: AppColors.textSecondary,
                 height: 1.4,
               ),
             ),

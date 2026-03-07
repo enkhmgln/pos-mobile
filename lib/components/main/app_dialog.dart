@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppDialog extends StatelessWidget {
   const AppDialog({
     super.key,
@@ -19,10 +21,9 @@ class AppDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final surface = Theme.of(context).colorScheme.surface;
     return Dialog(
-      backgroundColor: surface,
-      surfaceTintColor: surface,
+      backgroundColor: AppColors.surface,
+      surfaceTintColor: AppColors.surface,
       insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 24),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),

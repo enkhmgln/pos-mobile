@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppRefresher extends StatelessWidget {
   const AppRefresher({
     super.key,
@@ -23,7 +25,6 @@ class AppRefresher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     return SmartRefresher(
       controller: controller,
       enablePullDown: enablePullDown,
@@ -31,21 +32,20 @@ class AppRefresher extends StatelessWidget {
       onRefresh: onRefresh,
       onLoading: onLoading,
       header: MaterialClassicHeader(
-        color: cs.primary,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        color: AppColors.primary,
+        backgroundColor: AppColors.background,
       ),
       footer: CustomFooter(
         builder: (footerContext, mode) {
           if (mode == LoadStatus.loading) {
-            final primary = Theme.of(footerContext).colorScheme.primary;
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Center(
-                child: SizedBox.square(
+                  child: SizedBox.square(
                   dimension: 24,
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    valueColor: AlwaysStoppedAnimation<Color>(primary),
+                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary),
                   ),
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
 import '/components/main/app_scaffold.dart';
 
 class InitialView extends StatelessWidget {
@@ -9,7 +10,6 @@ class InitialView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     return AppScaffold(
       body: SafeArea(
         child: Center(
@@ -22,7 +22,7 @@ class InitialView extends StatelessWidget {
                   'Vendly',
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: colorScheme.primary,
+                        color: AppColors.primary,
                       ),
                 ),
                 const SizedBox(height: 12),
@@ -30,7 +30,7 @@ class InitialView extends StatelessWidget {
                   'The operating system for modern small retail.',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: colorScheme.onSurface.withOpacity(0.7),
+                        color: AppColors.textSecondary,
                       ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '/app/theme/app_colors.dart';
 import '/components/button/_.dart';
 import 'app_dialog.dart';
 
@@ -22,20 +23,18 @@ class AppDialogWarning extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-
     return AppDialog(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.warning_amber_rounded, size: 56, color: cs.primary),
+          Icon(Icons.warning_amber_rounded, size: 56, color: AppColors.primary),
           const SizedBox(height: 16),
           Text(
             title,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.w600,
-              color: cs.onSurface,
+              color: AppColors.textPrimary,
             ),
           ),
           const SizedBox(height: 24),

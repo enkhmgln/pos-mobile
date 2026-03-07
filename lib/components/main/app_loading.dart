@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/app/theme/app_colors.dart';
+
 class AppLoading extends StatelessWidget {
   const AppLoading({
     super.key,
@@ -14,12 +16,11 @@ class AppLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primary = Theme.of(context).colorScheme.primary;
     return Center(
       child: SizedBox.square(
         dimension: size,
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(color ?? primary),
+          valueColor: AlwaysStoppedAnimation<Color>(color ?? AppColors.primary),
           strokeWidth: strokeWidth,
         ),
       ),
