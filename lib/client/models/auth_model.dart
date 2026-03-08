@@ -3,8 +3,7 @@ import 'user_model.dart';
 class SignupModel {
   const SignupModel({required this.email});
   final String email;
-  factory SignupModel.fromJson(dynamic json) =>
-      SignupModel(email: json as String);
+  factory SignupModel.fromJson(String json) => SignupModel(email: json);
 }
 
 class VerifyOtpModel {
