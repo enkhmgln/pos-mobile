@@ -25,6 +25,16 @@ class AppPages {
       page: () => const CreateAccountView(),
       binding: CreateAccountBinding(),
     ),
+    GetPage(
+      name: VerifyOtpView.routeName,
+      page: () => const VerifyOtpView(),
+      binding: VerifyOtpBinding(),
+    ),
+    GetPage(
+      name: HomeView.routeName,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
     // GetPage(
     //   name: WelcomeView.routeName,
     //   page: () => const WelcomeView(),
@@ -44,11 +54,6 @@ class AppPages {
     //   name: LoginView.routeName,
     //   page: () => const LoginView(),
     //   binding: LoginBinding(),
-    // ),
-    // GetPage(
-    //   name: VerifyOtpView.routeName,
-    //   page: () => const VerifyOtpView(),
-    //   binding: VerifyOtpBinding(),
     // ),
   ];
 
