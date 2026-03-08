@@ -25,15 +25,16 @@ class AppTabBarWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: AppColors.textPrimary.withValues(alpha: 0.06),
-            blurRadius: 8,
-            offset: const Offset(0, -2),
+            blurRadius: 12,
+            offset: const Offset(0, -4),
           ),
         ],
       ),
       child: SafeArea(
         top: false,
+        bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(items.length, (index) {
@@ -77,38 +78,46 @@ class _AppTabBarButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
+        splashColor: AppColors.primary.withValues(alpha: 0.08),
+        highlightColor: AppColors.primary.withValues(alpha: 0.04),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: selected ? AppColors.surface : Colors.transparent,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Icon(
-                      icon,
-                      size: 24,
-                      color: selected
-                          ? AppColors.textPrimary
-                          : AppColors.textSecondary,
-                    ),
+                  Icon(
+                    icon,
+                    size: 26,
+                    color: selected
+                        ? AppColors.primary
+                        : AppColors.textSecondary.withValues(alpha: 0.9),
                   ),
                   if (badge != null && badge! > 0)
                     Positioned(
-                      top: -4,
-                      right: -4,
+                      top: -6,
+                      right: -10,
                       child: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: const BoxDecoration(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
                           color: AppColors.accentBlue,
-                          shape: BoxShape.circle,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.accentBlue.withValues(
+                                alpha: 0.4,
+                              ),
+                              blurRadius: 4,
+                              offset: const Offset(0, 1),
+                            ),
+                          ],
                         ),
                         constraints: const BoxConstraints(
                           minWidth: 18,
@@ -120,7 +129,7 @@ class _AppTabBarButton extends StatelessWidget {
                             style: AppTextStyles.label.copyWith(
                               color: AppColors.background,
                               fontSize: 10,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
@@ -128,14 +137,15 @@ class _AppTabBarButton extends StatelessWidget {
                     ),
                 ],
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 2),
               Text(
                 label,
                 style: AppTextStyles.label.copyWith(
                   fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
                   color: selected
-                      ? AppColors.textPrimary
-                      : AppColors.textSecondary,
+                      ? AppColors.primary
+                      : AppColors.textSecondary.withValues(alpha: 0.9),
+                  letterSpacing: 0.2,
                 ),
               ),
             ],

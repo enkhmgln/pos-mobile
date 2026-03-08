@@ -15,31 +15,47 @@ class AppTabBar extends StatelessWidget {
       height: 48,
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.textPrimary.withValues(alpha: 0.04),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: TabBar(
         controller: controller,
         indicator: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
           color: AppColors.background,
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withValues(alpha: 0.08),
+              color: AppColors.textPrimary.withValues(alpha: 0.06),
               blurRadius: 4,
-              offset: const Offset(0, 2),
+              offset: const Offset(0, 1),
             ),
           ],
         ),
         indicatorSize: TabBarIndicatorSize.tab,
-        indicatorPadding: const EdgeInsets.all(4),
+        indicatorPadding: const EdgeInsets.symmetric(
+          horizontal: 4,
+          vertical: 4,
+        ),
         dividerHeight: 0,
+        labelColor: AppColors.textPrimary,
+        unselectedLabelColor: AppColors.textSecondary,
         labelStyle: AppTextStyles.bodyMediumMedium.copyWith(
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
+          letterSpacing: 0.2,
         ),
         unselectedLabelStyle: AppTextStyles.bodyMediumMedium.copyWith(
           color: AppColors.textSecondary,
+          letterSpacing: 0.2,
         ),
+        labelPadding: const EdgeInsets.symmetric(horizontal: 8),
+        overlayColor: WidgetStateProperty.all(Colors.transparent),
         tabs: tabs.map((e) => Tab(text: e)).toList(),
       ),
     );
