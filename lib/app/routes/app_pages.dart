@@ -13,7 +13,7 @@ class AppPages {
   static String get initial => !UserManager.isLogged
       ? WelcomeView.routeName
       : (DeviceStoreManager.shared.data<bool>(kPermissionsCompleted) ?? false)
-      ? HomeView.routeName
+      ? TabBarScreen.routeName
       : PermissionsView.routeName;
 
   static final List<GetPage> routes = [
@@ -46,6 +46,11 @@ class AppPages {
       name: HomeView.routeName,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: TabBarScreen.routeName,
+      page: () => const TabBarScreen(),
+      binding: TabBarBinding(),
     ),
     GetPage(
       name: PermissionsView.routeName,
