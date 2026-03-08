@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8000';
+const baseUrl = 'https://pos.nexusinfinity.mn';
 
 /// Storage keys
 const kToken = 'kAuthToken';
