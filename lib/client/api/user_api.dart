@@ -1,18 +1,19 @@
 import '/client/api_client.dart';
 import '/client/api_result.dart' show ApiResult;
-import '/client/models/profile_update_model.dart';
+import '/client/models/profile_model.dart';
 import '/client/response_sender.dart';
 
 class UserApi {
-  final ResponseSender _sender = ResponseSender(ApiClient());
+  UserApi._();
 
-  Future<ApiResult<Map<String, dynamic>>> updateProfile(
-    ProfileUpdatePayload payload,
+  static final _sender = ResponseSender(ApiClient());
+
+  static Future<ApiResult<Map<String, dynamic>>> updateProfile(
+    ProfileModel profile,
   ) async {
-    final body = payload.toJson();
     return _sender.patch<Map<String, dynamic>>(
       '/api/users/profile',
-      data: body,
+      data: profile.toJson(),
       fromJson: (d) => Map<String, dynamic>.from(d as Map),
     );
   }

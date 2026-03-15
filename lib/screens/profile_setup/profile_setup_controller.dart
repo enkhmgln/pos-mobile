@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '/client/api/files_api.dart';
 import '/client/api/user_api.dart';
-import '/client/models/profile_update_model.dart';
+import '/client/models/profile_model.dart';
 import '/components/_.dart';
 import '/core/utils/validator.dart';
 import '/screens/_.dart';
@@ -170,7 +170,7 @@ class ProfileSetupController extends AppBaseController {
   }
 
   Future<void> submitProfile() async {
-    final payload = ProfileUpdatePayload(
+    final profile = ProfileModel(
       firstName: firstNameModel.value.trim().isEmpty
           ? null
           : firstNameModel.value.trim(),
@@ -188,7 +188,7 @@ class ProfileSetupController extends AppBaseController {
     );
 
     isLoading.value = true;
-    final result = await UserApi().updateProfile(payload);
+    final result = await UserApi.updateProfile(profile);
     isLoading.value = false;
 
     if (result.isSuccess) {

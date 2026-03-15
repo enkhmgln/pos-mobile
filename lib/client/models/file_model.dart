@@ -1,7 +1,6 @@
-class FileModel {
-  final String id;
-  final String createdAt;
-  final String updatedAt;
+import 'base_model.dart';
+
+class FileModel extends BaseModel {
   final String? userId;
   final String originalName;
   final String storedName;
@@ -11,9 +10,9 @@ class FileModel {
   final String url;
 
   const FileModel({
-    required this.id,
-    required this.createdAt,
-    required this.updatedAt,
+    required super.id,
+    required super.createdAt,
+    required super.updatedAt,
     this.userId,
     required this.originalName,
     required this.storedName,
@@ -24,17 +23,18 @@ class FileModel {
   });
 
   factory FileModel.fromJson(Map<String, dynamic> json) {
+    final base = BaseModel.baseFromJson(json);
     return FileModel(
-      id: json['id'],
-      createdAt: json['created_at'],
-      updatedAt: json['updated_at'],
+      id: base.id,
+      createdAt: base.createdAt,
+      updatedAt: base.updatedAt,
       userId: json['user_id'] as String?,
-      originalName: json['original_name'],
-      storedName: json['stored_name'],
-      mimeType: json['mime_type'],
-      size: json['size'],
-      path: json['path'],
-      url: json['url'],
+      originalName: json['original_name'] as String,
+      storedName: json['stored_name'] as String,
+      mimeType: json['mime_type'] as String,
+      size: json['size'] as int,
+      path: json['path'] as String,
+      url: json['url'] as String,
     );
   }
 }

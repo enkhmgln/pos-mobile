@@ -29,7 +29,7 @@ class FilesApi {
     );
   }
 
-  static Future<ApiResult<FileModel>> get(String fileId) async {
+  static Future<ApiResult<FileModel>> getFile(String fileId) async {
     return _sender.get<FileModel>(
       '/api/files/$fileId',
       fromJson: (d) => FileModel.fromJson(d as Map<String, dynamic>),
